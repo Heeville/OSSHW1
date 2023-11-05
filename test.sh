@@ -75,7 +75,7 @@ do
 		read -p "Please enter the 'user id' (1~943) :" num
 		echo -e ""
 		user_rate=$(awk -v userid="$num" -F '\t' '$1==userid {print $2}' u.data | sort -n)
-		echo -e "$user_rate" | tr  '\n' '|'
+		echo -e "$user_rate" | tr  '\n' '|' | sed 's/|$//'
 		echo -e "\n"
 		awk -v movie_id="$user_rate" -F '|' 'BEGIN { split(movie_id, movies,"\n"); } 
 		{for (i in movies) 
